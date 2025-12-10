@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אלוגברה - כיתה ט'</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Rubik', sans-serif; background-color: #f8fafc; }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center">
+
+    <!-- מסך נעילה -->
+    <div id="loginScreen" class="bg-white p-8 rounded-2xl shadow-xl text-center max-w-sm w-full mx-4 border border-gray-200">
+        <div class="text-5xl mb-4">🔒</div>
+        <h1 class="text-2xl font-bold text-slate-800 mb-2">כניסה למנויים - כיתה ט'</h1>
+        <p class="text-slate-500 mb-6 text-sm">הזינו את הסיסמה כדי לגשת לחומרי הלימוד.</p>
+        
+        <input type="password" id="passwordInput" placeholder="סיסמה..." 
+               class="w-full p-3 border-2 border-gray-200 rounded-xl mb-4 text-center text-lg outline-none focus:border-indigo-500 transition"
+               onkeyup="if(event.key === 'Enter') checkPass()">
+        
+        <button onclick="checkPass()" class="w-full bg-indigo-600 text-white py-3 rounded-xl font-bold hover:bg-indigo-700 transition shadow-lg">
+            כניסה למתחם
+        </button>
+        <p id="errorMsg" class="text-red-500 text-sm mt-3 font-bold hidden">סיסמה שגויה ❌</p>
+    </div>
+
+    <!-- תוכן האתר (מוסתר) -->
+    <div id="contentScreen" class="hidden w-full min-h-screen flex flex-col">
+        <header class="bg-white shadow-sm p-4 sticky top-0 z-10 border-b border-indigo-100">
+            <div class="max-w-4xl mx-auto flex justify-between items-center">
+                <h2 class="text-xl font-bold text-indigo-800">אלוגברה - כיתה ט' 👑</h2>
+                <button onclick="logout()" class="text-sm text-slate-500 hover:text-red-500">יציאה</button>
+            </div>
+        </header>
+
+        <main class="flex-grow p-6 max-w-4xl mx-auto w-full space-y-16">
+            
+            <!-- אזור 1: אלגברה -->
+            <section>
+                <div class="flex items-center gap-3 mb-6 border-b border-orange-100 pb-2">
+                    <span class="text-2xl">wd</span>
+                    <h3 class="text-2xl font-bold text-orange-900">אלגברה (משוואות וטכניקה)</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    
+                    <!-- 1. חוק הפילוג -->
+                    <a href="algebra/algebra1.html" class="group block bg-white p-5 rounded-2xl border-2 border-orange-50 hover:border-orange-500 transition-all shadow-sm hover:shadow-md">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <span class="text-2xl bg-orange-100 p-2 rounded-lg">1️⃣</span>
+                                <div>
+                                    <h4 class="font-bold text-lg text-slate-800 group-hover:text-orange-600">חוק הפילוג המורחב</h4>
+                                </div>
+                            </div>
+                            <span class="text-orange-400 text-2xl group-hover:translate-x-1 transition-transform">←</span>
+                        </div>
+                    </a>
+
+                    <!-- 2. כפל מקוצר (algebra2) - הועבר לכאן לפי בקשתך -->
+                    <a href="algebra/algebra2.html" class="group block bg-white p-5 rounded-2xl border-2 border-orange-50 hover:border-orange-500 transition-all shadow-sm hover:shadow-md">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <span class="text-2xl bg-orange-100 p-2 rounded-lg">2️⃣</span>
+                                <div>
+                                    <h4 class="font-bold text-lg text-slate-800 group-hover:text-orange-600">נוסחאות כפל מקוצר</h4>
+                                </div>
+                            </div>
+                            <span class="text-orange-400 text-2xl group-hover:translate-x-1 transition-transform">←</span>
+                        </div>
+                    </a>
+
+                    <!-- 3. פירוק לגורמים (algebra3) -->
+                    <a href="algebra/algebra3.html" class="group block bg-white p-5 rounded-2xl border-2 border-orange-50 hover:border-orange-500 transition-all shadow-sm hover:shadow-md">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <span class="text-2xl bg-orange-100 p-2 rounded-lg">3️⃣</span>
+                                <div>
+                                    <h4 class="font-bold text-lg text-slate-800 group-hover:text-orange-600">פירוק לגורמים</h4>
+                                </div>
+                            </div>
+                            <span class="text-orange-400 text-2xl group-hover:translate-x-1 transition-transform">←</span>
+                        </div>
+                    </a>
+
+                    <!-- 4. טרינום -->
+                    <a href="algebra/algebra4.html" class="group block bg-white p-5 rounded-2xl border-2 border-orange-50 hover:border-orange-500 transition-all shadow-sm hover:shadow-md">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <span class="text-2xl bg-orange-100 p-2 rounded-lg">4️⃣</span>
+                                <div>
+                                    <h4 class="font-bold text-lg text-slate-800 group-hover:text-orange-600">טרינום</h4>
+                                </div>
+                            </div>
+                            <span class="text-orange-400 text-2xl group-hover:translate-x-1 transition-transform">←</span>
+                        </div>
+                    </a>
+
+                    <!-- 5. שברים וסיכום -->
+                    <a href="algebra/algebra5.html" class="group block bg-white p-5 rounded-2xl border-2 border-orange-50 hover:border-orange-500 transition-all shadow-sm hover:shadow-md col-span-1 md:col-span-2">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <span class="text-2xl bg-orange-100 p-2 rounded-lg">5️⃣</span>
+                                <div>
+                                    <h4 class="font-bold text-lg text-slate-800 group-hover:text-orange-600">כפל, חילוק וצמצום שברים</h4>
+                                    <p class="text-slate-500 text-xs">כולל סיכום מקיף</p>
+                                </div>
+                            </div>
+                            <span class="text-orange-400 text-2xl group-hover:translate-x-1 transition-transform">←</span>
+                        </div>
+                    </a>
+
+                    <!-- בוחן מסכם אלגברה -->
+                    <a href="algebra/mivdak.html" class="group block bg-orange-100 p-4 rounded-2xl border-2 border-orange-300 hover:border-orange-600 transition-all shadow-sm hover:shadow-md col-span-1 md:col-span-2 mt-2">
+                        <div class="flex items-center justify-center gap-3">
+                            <span class="text-2xl">📝</span>
+                            <h4 class="font-bold text-lg text-orange-800 group-hover:text-orange-900">בוחן מסכם - אלגברה</h4>
+                        </div>
+                    </a>
+
+                </div>
+            </section>
+
+            <!-- אזור 2: גאומטריה -->
+            <section>
+                <div class="flex items-center gap-3 mb-6 border-b border-purple-100 pb-2">
+                    <span class="text-2xl">📐</span>
+                    <h3 class="text-2xl font-bold text-purple-900">גאומטריה</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                    <!-- פריטי גאומטריה קיימים -->
+                    <a href="geometry/makbilit.html" class="group block bg-white p-5 rounded-2xl border-2 border-purple-50 hover:border-purple-500 transition-all shadow-sm hover:shadow-md">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-3xl bg-purple-100 p-2 rounded-lg">▱</span>
+                            <span class="text-purple-300 group-hover:text-purple-600 transition">→</span>
+                        </div>
+                        <h4 class="font-bold text-slate-800">מקבילית</h4>
+                    </a>
+
+                    <a href="geometry/malben.html" class="group block bg-white p-5 rounded-2xl border-2 border-purple-50 hover:border-purple-500 transition-all shadow-sm hover:shadow-md">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-3xl bg-purple-100 p-2 rounded-lg">▭</span>
+                            <span class="text-purple-300 group-hover:text-purple-600 transition">→</span>
+                        </div>
+                        <h4 class="font-bold text-slate-800">מלבן</h4>
+                    </a>
+
+                    <a href="geometry/dalton.html" class="group block bg-white p-5 rounded-2xl border-2 border-purple-50 hover:border-purple-500 transition-all shadow-sm hover:shadow-md">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-3xl bg-purple-100 p-2 rounded-lg">🪁</span>
+                            <span class="text-purple-300 group-hover:text-purple-600 transition">→</span>
+                        </div>
+                        <h4 class="font-bold text-slate-800">דלתון</h4>
+                    </a>
+
+                    <a href="geometry/trapez.html" class="group block bg-white p-5 rounded-2xl border-2 border-purple-50 hover:border-purple-500 transition-all shadow-sm hover:shadow-md">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-3xl bg-purple-100 p-2 rounded-lg">⏢</span>
+                            <span class="text-purple-300 group-hover:text-purple-600 transition">→</span>
+                        </div>
+                        <h4 class="font-bold text-slate-800">טרפז</h4>
+                    </a>
+
+                    <a href="geometry/meoian.html" class="group block bg-white p-5 rounded-2xl border-2 border-purple-50 hover:border-purple-500 transition-all shadow-sm hover:shadow-md">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-3xl bg-purple-100 p-2 rounded-lg">🔷</span>
+                            <span class="text-purple-300 group-hover:text-purple-600 transition">→</span>
+                        </div>
+                        <h4 class="font-bold text-slate-800">מעוין</h4>
+                    </a>
+
+                    <a href="geometry/riboa.html" class="group block bg-white p-5 rounded-2xl border-2 border-purple-50 hover:border-purple-500 transition-all shadow-sm hover:shadow-md">
+                        <div class="flex items-center justify-between mb-1">
+                            <span class="text-3xl bg-purple-100 p-2 rounded-lg">⬜</span>
+                            <span class="text-purple-300 group-hover:text-purple-600 transition">→</span>
+                        </div>
+                        <h4 class="font-bold text-slate-800">ריבוע</h4>
+                    </a>
+
+                    <a href="geometry/teana.html" class="group block bg-purple-50 p-6 rounded-2xl border-2 border-purple-200 hover:border-purple-600 transition-all shadow-sm hover:shadow-md col-span-1 md:col-span-2 lg:col-span-3">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <span class="text-2xl bg-white p-2 rounded-lg shadow-sm">📝</span>
+                                <div>
+                                    <h4 class="font-bold text-lg text-slate-900 group-hover:text-purple-700">איך כותבים טענה ונימוק?</h4>
+                                </div>
+                            </div>
+                            <span class="text-purple-500 text-2xl group-hover:translate-x-1 transition-transform">←</span>
+                        </div>
+                    </a>
+
+                    <!-- בוחן מסכם גאומטריה -->
+                    <a href="geometry/mivdak2.html" class="group block bg-purple-100 p-4 rounded-2xl border-2 border-purple-300 hover:border-purple-600 transition-all shadow-sm hover:shadow-md col-span-1 md:col-span-2 lg:col-span-3 mt-2">
+                        <div class="flex items-center justify-center gap-3">
+                            <span class="text-2xl">📐</span>
+                            <h4 class="font-bold text-lg text-purple-800 group-hover:text-purple-900">בוחן מסכם - גאומטריה</h4>
+                        </div>
+                    </a>
+
+                </div>
+            </section>
+
+            <!-- אזור 3: פונקציות -->
+            <section>
+                <div class="flex items-center gap-3 mb-6 border-b border-indigo-100 pb-2">
+                    <span class="text-2xl">📈</span>
+                    <h3 class="text-2xl font-bold text-indigo-900">פונקציות</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    
+                    <a href="functions/a,b,c,k,p.html" class="group block bg-white p-6 rounded-2xl border-2 border-indigo-50 hover:border-indigo-500 transition-all shadow-sm hover:shadow-md">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <div class="bg-indigo-100 p-3 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-bold text-indigo-600">P</div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-slate-800 group-hover:text-indigo-600">מה זה פרבולה? (הקדמה)</h4>
+                                </div>
+                            </div>
+                            <span class="text-indigo-400 text-2xl group-hover:translate-x-1 transition-transform">←</span>
+                        </div>
+                    </a>
+
+                    <a href="functions/parabola.html" class="group block bg-white p-6 rounded-2xl border-2 border-indigo-50 hover:border-indigo-500 transition-all shadow-sm hover:shadow-md">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <div class="bg-indigo-100 p-3 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-bold text-indigo-600">∪</div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-slate-800 group-hover:text-indigo-600">הסבר מקיף לפרבולה</h4>
+                                </div>
+                            </div>
+                            <span class="text-indigo-400 text-2xl group-hover:translate-x-1 transition-transform">←</span>
+                        </div>
+                    </a>
+
+                    <a href="functions/parabola2.html" class="group block bg-indigo-50 p-6 rounded-2xl border-2 border-indigo-200 hover:border-indigo-500 transition-all shadow-sm hover:shadow-md md:col-span-2">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <div class="bg-white p-3 rounded-xl w-12 h-12 flex items-center justify-center text-xl font-bold text-indigo-600">💡</div>
+                                <div>
+                                    <h4 class="font-bold text-lg text-slate-800 group-hover:text-indigo-600">הסבר נוסף לפרבולה</h4>
+                                    <p class="text-slate-500 text-sm">חיזוק והעמקה</p>
+                                </div>
+                            </div>
+                            <span class="text-indigo-400 text-2xl group-hover:translate-x-1 transition-transform">←</span>
+                        </div>
+                    </a>
+
+                    <!-- בוחן מסכם פונקציות -->
+                    <a href="functions/mivdak3.html" class="group block bg-indigo-100 p-4 rounded-2xl border-2 border-indigo-300 hover:border-indigo-600 transition-all shadow-sm hover:shadow-md col-span-1 md:col-span-2 mt-2">
+                        <div class="flex items-center justify-center gap-3">
+                            <span class="text-2xl">📊</span>
+                            <h4 class="font-bold text-lg text-indigo-800 group-hover:text-indigo-900">בוחן מסכם - פרבולות</h4>
+                        </div>
+                    </a>
+
+                </div>
+            </section>
+
+            <!-- אזור 4: מבחן מסכם (קטגוריה נפרדת) -->
+            <section class="pt-8 border-t-2 border-dashed border-slate-200">
+                <div class="flex items-center justify-center gap-3 mb-6">
+                    <span class="text-3xl">🏆</span>
+                    <h3 class="text-3xl font-black text-slate-800">המבחן המסכם</h3>
+                </div>
+                
+                <a href="mivhan.html" class="group block bg-gradient-to-r from-indigo-600 to-purple-600 p-8 rounded-3xl shadow-lg hover:shadow-2xl hover:scale-[1.02] transition-all transform duration-300 text-center text-white relative overflow-hidden">
+                    <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                    <h4 class="text-3xl font-bold mb-2">כניסה למבחן המסכם</h4>
+                    <p class="text-indigo-100 text-lg opacity-90">בדיקת ידע מקיפה על כל החומר הנלמד</p>
+                    <div class="mt-4 inline-block bg-white/20 px-4 py-1 rounded-full text-sm backdrop-blur-sm">
+                        ℹ️ המבחן נועד לבדיקה עצמית בלבד ואין עליו ציון
+                    </div>
+                </a>
+            </section>
+
+        </main>
+
+        <!-- פוטר -->
+        <footer class="bg-slate-800 text-slate-400 text-center py-6 mt-12 text-sm">
+            <p>© כל הזכויות שמורות לאלוגברה</p>
+        </footer>
+    </div>
+
+    <script>
+        // --- הגדרות ---
+        const PASSWORD = "1357";
+        
+        function checkPass() {
+            const input = document.getElementById('passwordInput').value;
+            if(input === PASSWORD) {
+                localStorage.setItem('math_access_grade9', 'true');
+                showContent();
+            } else {
+                const err = document.getElementById('errorMsg');
+                err.classList.remove('hidden');
+                setTimeout(() => err.classList.add('hidden'), 2000);
+            }
+        }
+
+        function showContent() {
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('contentScreen').classList.remove('hidden');
+        }
+
+        function logout() {
+            localStorage.removeItem('math_access_grade9');
+            location.reload();
+        }
+
+        if(localStorage.getItem('math_access_grade9') === 'true') {
+            showContent();
+        }
+    </script>
+</body>
+</html>
